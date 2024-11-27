@@ -12,12 +12,12 @@ spec:
       required:
         - username
         - version
-        - token
+        - api_key
       properties:
         username:
           title: Username
           type: string
-        token:
+        api_key:
           title: Harness API Key
           type: string
         version:
@@ -33,7 +33,7 @@ spec:
           "username": ${{ parameters.username }}
           "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
           "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar": ${{ parameters.username }}
-        apikey: ${{ parameters.token }}
+        apikey: ${{ parameters.api_key }}
   output:
     links:
       - title: Pipeline Details
