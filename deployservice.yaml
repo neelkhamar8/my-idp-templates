@@ -20,7 +20,7 @@ spec:
         api_key:
           title: Harness API Key
           type: string
-          ui:field: secret
+          ui:widget: password
         version:
           title: Version
           type: string
