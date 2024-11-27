@@ -23,6 +23,8 @@ spec:
         version:
           title: Version
           type: string
+      api_key:
+        ui:field: Secret
   steps:
     - id: trigger
       name: Run Deploy service
