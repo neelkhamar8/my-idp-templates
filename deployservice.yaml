@@ -18,7 +18,7 @@ spec:
           title: Username
           type: string
         api_key:
-          title: Harness API Key
+          title: API Key
           type: string
         version:
           title: Version
