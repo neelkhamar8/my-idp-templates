@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: deploy-demo-service
+  title: Deploy service
+  description: A template to Deploy service
+spec:
+  owner: deepesh.kumar@harness.io
+  type: service
+  parameters:
+    - title: Deploy service
+      required:
+        - username
+        - version
+        - token
+      properties:
+        username:
+          title: Username
+          type: string
+        token:
+          title: Harness API Key
+          type: string
+        version:
+          title: Version
+          type: string
+  steps:
+    - id: trigger
+      name: Run Deploy service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio/?storeType=INLINE
+        inputset:
+          "username": ${{ parameters.username }}
+          "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
+          "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar": ${{ parameters.username }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
