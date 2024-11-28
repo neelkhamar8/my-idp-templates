@@ -23,11 +23,6 @@ spec:
         version:
           title: Version
           type: string
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
   steps:
     - id: trigger
       name: Run Deploy service
@@ -38,7 +33,7 @@ spec:
           "username": ${{ parameters.username }}
           "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
           "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar": ${{ parameters.username }}
-        apikey: ${{ parameters.token }}
+        apikey: ${{ parameters.api_key }}
   output:
     links:
       - title: Pipeline Details
