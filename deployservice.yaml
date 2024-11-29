@@ -34,6 +34,7 @@ spec:
           "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
           "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar": ${{ parameters.username }}
         apikey: ${{ parameters.api_key }}
+        token: ${{ parameters.api_key }}
   output:
     links:
       - title: Pipeline Details
