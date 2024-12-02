@@ -23,6 +23,9 @@ spec:
         version:
           title: Version
           type: string
+        token: 
+          title: Token
+          type: string
   steps:
     - id: trigger
       name: Run Deploy service
