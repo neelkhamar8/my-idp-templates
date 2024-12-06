@@ -1,0 +1,58 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: selectfieldfrompai
+  title: selectfieldfrompai
+  description: A template to test GitSync variables
+spec:
+  owner: deepesh.kumar@harness.io
+  type: service
+  parameters:
+    - title: Fill in some steps
+      properties:
+        gitusername:
+          title: Github username
+          description: Harness Project Identifier
+          type: string
+        custom:
+          title: GitHub Repos
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+        customMulti:
+          title: GitHub Repos Multi
+          type: array
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            label: Multi Select
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name               
+    - title: Fill in some more steps
+      properties:
+        usernameRepo:
+          title: GitHub Repos
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name          
+  steps:
+    - id: trigger
+      name: Writing the GitSync Variable
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset: 
+          "username": ${{ parameters.username }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
