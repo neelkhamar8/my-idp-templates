@@ -5,7 +5,7 @@ metadata:
   title: selectfieldfrompai
   description: A template to test GitSync variables
 spec:
-  owner: deepesh.kumar@harness.io
+  owner: c_neel.khamar@harness.io
   type: service
   parameters:
     - title: Fill in some steps
