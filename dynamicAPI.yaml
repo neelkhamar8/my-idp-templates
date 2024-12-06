@@ -28,7 +28,7 @@ spec:
             valueSelector: full_name
             requestOptions: 
               method: POST
-              body: ${{parameters.formdata}}
+              body: parameters.formdata
         customMulti:
           title: GitHub Repos Multi
           type: array
