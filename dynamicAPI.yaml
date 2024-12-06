@@ -14,6 +14,10 @@ spec:
           title: Github username
           description: Harness Project Identifier
           type: string
+        formdata:
+          title: Form Data
+          description: API Form Data
+          type: string
         custom:
           title: GitHub Repos
           type: string
@@ -22,6 +26,9 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
+            requestOptions: 
+              method: POST
+              body: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
