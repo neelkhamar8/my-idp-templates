@@ -45,9 +45,9 @@ spec:
               headers:
                 Content-Type: application/json
                 body:
-                  key: value
+                  key: value1
                   anotherKey:
-                    nestedKey: value
+                    nestedKey: value2
     - title: Fill in some more steps
       properties:
         usernameRepo:
