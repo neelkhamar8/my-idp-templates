@@ -26,9 +26,11 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            requestOptions: 
+            request: 
               method: POST
-              body: '{{parameters.formdata}}'
+              headers:
+                Content-Type: application/json
+                body: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
