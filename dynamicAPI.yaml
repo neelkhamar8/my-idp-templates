@@ -39,7 +39,15 @@ spec:
           ui:options:
             label: Multi Select
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
-            valueSelector: full_name               
+            valueSelector: full_name
+            request:
+              method: POST
+              headers:
+                Content-Type: application/json
+                body:
+                  key: value
+                  anotherKey:
+                    nestedKey: value
     - title: Fill in some more steps
       properties:
         usernameRepo:
