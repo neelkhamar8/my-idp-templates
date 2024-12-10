@@ -60,11 +60,6 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-                body: {{parameters.formdata}}
   steps:
     - id: trigger
       name: Writing the GitSync Variable
