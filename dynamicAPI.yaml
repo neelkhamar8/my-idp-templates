@@ -30,8 +30,7 @@ spec:
               method: POST
               headers:
                 Content-Type: application/json
-                body: 
-                  authKey: {{parameters.formdata}}
+                body: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
