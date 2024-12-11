@@ -15,8 +15,8 @@ spec:
           description: Harness Project Identifier
           type: string
         formdata:
-          title: Form Data
-          description: API Form Data
+          title: Secret
+          description: API Secret
           type: string
         custom:
           title: GitHub Repos
@@ -31,7 +31,7 @@ spec:
               headers:
                 Content-Type: application/json
                 body: 
-                  name: {{parameters.formdata}}
+                  secret: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
