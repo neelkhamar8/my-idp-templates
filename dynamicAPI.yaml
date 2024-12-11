@@ -45,11 +45,8 @@ spec:
               method: POST
               headers:
                 Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
-                Content-Type: application/json
-              body:
-                key: value1
-                anotherKey:
-                  nestedKey: value2
+                Content-Type: text/plain
+              body: {{parameters.formdata}}
     - title: Fill in some more steps
       properties:
         usernameRepo:
