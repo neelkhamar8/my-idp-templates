@@ -1,43 +1,51 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: deploy-demo-service
-  title: Deploy service
+  name: x-api-key
+  title: Deploy service using x-api-key
   description: A template to Deploy service
 spec:
-  owner: deepesh.kumar@harness.io
+  owner: c_neel.khamar@harness.io
   type: service
   parameters:
     - title: Deploy service
       required:
         - username
         - version
-        - api_key
       properties:
+        name:
+          title: Select environments
+          type: array
+          items:
+            type: string
+            enum:
+              - production
+              - staging
+              - development
+          uniqueItems: true
+          ui:widget: checkboxes       
         username:
           title: Username
-          type: string
-        api_key:
-          title: API Key
           type: string
         version:
           title: Version
           type: string
-        token: 
-          title: Token
+        apiKeySecret:  
+          title: API Key Secret
           type: string
+           
   steps:
     - id: trigger
       name: Run Deploy service
       action: trigger:harness-custom-pipeline
       input:
-        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio/?storeType=INLINE
-        inputset:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/workflowtest/pipeline-studio?storeType=INLINE
+        inputset: 
+          "name": ${{ parameters.name }}
           "username": ${{ parameters.username }}
           "pipeline.stages.deploy.variables.version": ${{ parameters.version }}
-          "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar": ${{ parameters.username }}
-        apikey: ${{ parameters.api_key }}
-        token: ${{ parameters.api_key }}
+          "pipeline.stages.deploy.spec.execution.steps.ShellScript_1.spec.environmentVariables.scriptVar":  ${{ parameters.username }}
+        apiKeySecret: ${{ parameters.apiKeySecret }}
   output:
     links:
       - title: Pipeline Details
