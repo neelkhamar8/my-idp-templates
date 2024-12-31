@@ -51,7 +51,6 @@ spec:
             label: Multi Select
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            allowArbitraryValues: true
             # request:
             #   method: POST
             #   headers:
