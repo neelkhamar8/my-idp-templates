@@ -27,13 +27,6 @@ spec:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
             allowArbitraryValues: true
-            request: 
-              method: POST
-              headers:
-                Content-Type: application/x-www-form-urlencoded
-              body: 
-                secret: abcdefg
-                name: Neel Khamar
         custom2:
           title: GitHub Repos
           type: string
