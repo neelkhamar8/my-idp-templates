@@ -9,6 +9,7 @@ spec:
   type: service
   parameters:
     - title: Fill in some steps
+      type: array
       properties:
         gitusername:
           title: Github username
