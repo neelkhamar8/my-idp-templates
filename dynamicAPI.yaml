@@ -20,7 +20,7 @@ spec:
           type: string
         custom:
           title: GitHub Repos
-          type: string
+          type: array
           description: Pick one of GitHub Repos
           ui:field: SelectFieldFromApi
           ui:options:
@@ -35,12 +35,12 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request: 
-              method: POST
-              headers:
-                Content-Type: application/json
-              body: 
-                secret: {{parameters.formdata}}
+            # request: 
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body: 
+            #     secret: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
@@ -50,12 +50,12 @@ spec:
             label: Multi Select
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request:
-              method: POST
-              headers:
-                Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
-                Content-Type: text/plain
-              body: {{parameters.formdata}}
+            # request:
+            #   method: POST
+            #   headers:
+            #     Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
+            #     Content-Type: text/plain
+            #   body: {{parameters.formdata}}
     - title: Fill in some more steps
       properties:
         usernameRepo:
