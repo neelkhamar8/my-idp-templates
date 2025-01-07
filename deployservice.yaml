@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: IconTest
-  title: IconTest
+  name: Deploy Service Test
+  title: Deploy Service Test
   description: A template to test GitSync variables
   links:
     - url: https://www.google.com
