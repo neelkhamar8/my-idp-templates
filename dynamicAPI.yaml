@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: selectfieldfrompai
   title: selectfieldfrompai
-  description: A template to test GitSync variables
+  description: A template to test GitSync
 spec:
   owner: c_neel.khamar@harness.io
   type: service
