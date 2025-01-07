@@ -6,7 +6,7 @@ metadata:
   description: A template to test GitSync variables
   links:
     - url: https://www.google.com
-      icon: Burp
+      icon: wiz
 spec:
   owner: c_neel.khamar@harness.io
   type: service
