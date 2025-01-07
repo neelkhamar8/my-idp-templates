@@ -1,9 +1,12 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: x-api-key
-  title: Deploy service using x-api-key
-  description: A template to Deploy service
+  name: IconTest
+  title: IconTest
+  description: A template to test GitSync variables
+  links:
+    - url: https://www.google.com
+      icon: azurewebapp
 spec:
   owner: c_neel.khamar@harness.io
   type: service
