@@ -7,8 +7,10 @@ metadata:
   links:
     - url: https://www.google.com
       icon: wiz
+      title: Google Mailer
     - url: https://www.harness.io
       icon: azurewebapp
+      title: Harness Mailer
 spec:
   owner: c_neel.khamar@harness.io
   type: service
