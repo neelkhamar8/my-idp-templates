@@ -9,13 +9,21 @@ metadata:
     - harness
     - devspace
 spec:
-  owner: developer_experience@harness.io
+  owner: c_neel.khamar@harness.io
   type: service
   parameters:
     - title: Trigger deployment
       required:
         - UserId
       properties:
+        environment: 
+          title: Environment
+          type: string
+          default: Devspaces
+        infrastructure:
+          title: Infrastructure
+          type: string
+          default: infra
         UserId:
           title: UserId
           type: string
