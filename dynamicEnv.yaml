@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: devspace-deploy
+  title: Trigger Devspace deployment for services
+  description: Template for deploying services to Devspace
+  tags:
+    - deploy
+    - harness
+    - devspace
+spec:
+  owner: developer_experience@harness.io
+  type: service
+  parameters:
+    - title: Trigger deployment
+      required:
+        - UserId
+      properties:
+        UserId:
+          title: UserId
+          type: string
+          description: Enter your name alias example if your name is John Smith, then enter johns and for snapshot just snapshot
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Trigger Deployment
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://harness0.harness.io/ng/account/l7B_kbSEQD2wjrM7PShm5w/module/ci/orgs/PROD/projects/Harness/pipelines/Deploy_Services/pipeline-studio/?storeType=REMOTE&connectorRef=org.harnessplinfra&repoName=harness-pl-infra&branch=master'
+        inputset:
+          USERID: ${{ parameters.UserId }}
+        apikey: ${{ parameters.token }}   
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
