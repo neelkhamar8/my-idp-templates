@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: selectfieldfrompai
+  name: DYnamicMethod
   title: selectfieldfrompai
   description: A template to test GitSync
 spec:
