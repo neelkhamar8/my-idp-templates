@@ -38,12 +38,12 @@ spec:
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio?storeType=INLINE'
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio?storeType=INLINE
         inputset:
           USERID: ${{ parameters.UserId }}
           pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
           pipeline.stages.PreDep.spec.environment.infrastructureDefinitions: ${{ parameters.infrastructure }}
-        apikey: ${{ parameters.token }}   
+        apiKeySecret: dummydeepesh
   output:
     links:
       - title: Pipeline Details
