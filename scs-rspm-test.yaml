@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: scs-rspm
-  title: Onboard github repos for SCS RSPM
+  name: scs-rspm-test
+  title: Onboard github repos for SCS RSPM Test
   description: A workflow to onboard github repos for automated scanning
   tags:
     - scs
