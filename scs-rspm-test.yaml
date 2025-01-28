@@ -1,0 +1,57 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: scs-rspm
+  title: Onboard github repos for SCS RSPM
+  description: A workflow to onboard github repos for automated scanning
+  tags:
+    - scs
+    - github
+    - compliance
+spec:
+  owner: c_neel.khamar@harness.io
+  type: service
+  parameters:
+    - title: Harness Org, Project and Github Repos
+      required:
+        - org_name
+        - project_name
+        - github_repo
+      properties:
+        org_name:
+          title: Organization Identifier
+          type: string
+          description: Enter value of existing org identifier
+        project_name:
+          title: Project Identifier
+          type: string
+          description: Enter value of existing project identifier
+        github_repo:
+          title: Name of the GitHub repositories to be scanned
+          type: string
+          description: Enter Repo names comma seperated
+    - title: Fetch Harness Token
+      properties:
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Onboarding Github Repos and running RSPM scans
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ssca/orgs/Audit_Demo/projects/Reetika_Test/pipelines/RSPM_Onboarding_via_APIs_Clone2/pipeline-studio?storeType=INLINE&stageId=Onboarding&sectionId=EXECUTION"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          org_name: ${{ parameters.org_name }}
+        apikey: ${{ parameters.token }}
+    # The final step is to register our new component in the catalog.
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
