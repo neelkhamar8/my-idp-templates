@@ -26,14 +26,13 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            allowArbitraryValues: true
-            # request: 
-            #   method: POST
-            #   headers:
-            #     Content-Type: application/x-www-form-urlencoded
-            #   body: 
-            #     key1: value1
-            #     key2: value2
+            request: 
+              method: POST
+              headers:
+                Content-Type: application/x-www-form-urlencoded
+              body: 
+                key1: value1
+                key2: value2
         custom2:
           title: GitHub Repos
           type: string
@@ -42,13 +41,12 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            allowArbitraryValues: true
-            # request: 
-            #   method: POST
-            #   headers:
-            #     Content-Type: application/json
-            #   body: 
-            #     secret: {{parameters.formdata}}
+            request: 
+              method: POST
+              headers:
+                Content-Type: application/json
+              body: 
+                secret: {{parameters.formdata}}
         customMulti:
           title: GitHub Repos Multi
           type: array
@@ -58,13 +56,12 @@ spec:
             label: Multi Select
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            allowArbitraryValues: false
-            # request:
-            #   method: POST
-            #   headers:
-            #     Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
-            #     Content-Type: text/plain
-            #   body: This is a simple plain text message
+            request:
+              method: POST
+              headers:
+                # Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
+                Content-Type: text/plain
+              body: This is a simple plain text message
     - title: Fill in some more steps
       properties:
         usernameRepo:
