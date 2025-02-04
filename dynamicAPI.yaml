@@ -25,7 +25,7 @@ spec:
         custom:
           title: GitHub Repos Multi
           type: array
-          description: Pick one of GitHub Repos
+          description: Pick multiple GitHub Repos
           ui:field: SelectFieldFromApi
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
