@@ -4,10 +4,6 @@ metadata:
   name: DYnamicMethod
   title: selectfieldfrompai
   description: A template to test GitSync
-  links:
-    - url: https://dashboard.example.com
-      title: Dashboard
-      icon: mend
 spec:
   owner: c_neel.khamar@harness.io
   type: service
