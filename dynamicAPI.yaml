@@ -56,8 +56,11 @@ spec:
               headers:
                 Content-Type: application/json
               body:
-                key1: value1
-                key2: value2
+                entityRefs:
+                  - user:default/autouser1
+                fields:
+                  - kind
+                  - metadata.name
         custom1:
           title: GitHub Repos Single
           type: string
