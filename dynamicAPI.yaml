@@ -18,6 +18,31 @@ spec:
           title: Secret
           description: API Secret
           type: string
+        jsondata:
+          title: Json Data
+          description: Payload
+          type: string
+        customvalidate:
+          title: GitHub Repos Single
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: ValidateAndFetch
+          ui:options:
+            button:
+              title: Fetch Refs
+            path: "catalog/entities/by-refs"
+            contextData:
+              loginName: items[0].metadata.name
+            request:
+              method: POST
+              headers:
+                Content-Type: application/json
+              body:
+                entityRefs:
+                  - user:default/autouser1
+                fields:
+                  - kind
+                  - metadata.name
         custom:
           title: GitHub Repos Multi
           type: array
@@ -26,11 +51,11 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request: 
+            request:
               method: POST
               headers:
                 Content-Type: application/json
-              body: 
+              body:
                 key1: value1
                 key2: value2
         custom1:
@@ -41,12 +66,12 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request: 
+            request:
               method: POST
               headers:
                 Content-Type: application/json
-              body: 
-                secret: {{parameters.formdata}}
+              body:
+                secret: { { parameters.formdata } }
         custom2:
           title: GitHub Repos Custom Single
           type: string
@@ -56,12 +81,11 @@ spec:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
             # allowArbitraryValues: true
-            request: 
+            request:
               method: POST
               headers:
                 Content-Type: application/json
-              body: 
-                secret: {{parameters.formdata}}
+              body: { { parameters.jsondata } }
         customMulti:
           title: GitHub Repos Custom Multi
           type: array
@@ -94,7 +118,7 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
         url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
-        inputset: 
+        inputset:
           "username": ${{ parameters.username }}
           "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
         apikey: ${{ parameters.token }}
