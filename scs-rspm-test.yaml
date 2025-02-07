@@ -12,45 +12,61 @@ spec:
   owner: c_neel.khamar@harness.io
   type: service
   parameters:
-    - title: Harness Org, Project and Github Repos
-      required:
-        - org_name
-        - project_name
-        - github_repo
+    - title: Fill in some steps
       properties:
-        org_name:
-          title: Organization Identifier
+        name:
+          title: Select environments
+          type: array
+          items:
+            type: string
+            enum:
+              - production
+              - staging
+              - development
+          uniqueItems: true
+          ui:widget: checkboxes    
+        gitusername:
+          title: Github username
+          description: Harness Project Identifier
           type: string
-          description: Enter value of existing org identifier
-        project_name:
-          title: Project Identifier
+        custom:
           type: string
-          description: Enter value of existing project identifier
-        github_repo:
-          title: Name of the GitHub repositories to be scanned
-          type: string
-          description: Enter Repo names comma seperated
-    - title: Fetch Harness Token
-      properties:
-        # This field is hidden but needed to authenticate the request to trigger the pipeline
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
+          # Use `SelectFieldFromApi` to configure the select field for the entry.
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: My Dropdown title
+            description: My custom description for the component
+
+            # The Path on the Backstage API and the parameters to fetch the data for the dropdown
+            path: 'catalog/entity-facets'
+            params:
+              facet: 'kind'
+
+            # (Optional) Renders the provided text as a placeholder value into the select box.
+            placeholder: 'Select from options'
+
+            # This selects the array element from the API fetch response. It finds the array with the name kind
+            # under the facets object
+            arraySelector: 'facets.kind'
+
+            # (Optional) This selects the field in the array to use for the value of each select item. If its not specified
+            # it will use the value of the item directly.
+            valueSelector: 'count'
+            # (Optional) This selects the field in the array to use for the label of each select item.
+            labelSelector: 'value'
+      
   steps:
     - id: trigger
-      name: Onboarding Github Repos and running RSPM scans
+      name: Writing the GitSync Variable
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ssca/orgs/Audit_Demo/projects/Reetika_Test/pipelines/RSPM_Onboarding_via_APIs_Clone2/pipeline-studio?storeType=INLINE&stageId=Onboarding&sectionId=EXECUTION"
-        inputset:
-          project_name: ${{ parameters.project_name }}
-          github_repo: ${{ parameters.github_repo }}
-          org_name: ${{ parameters.org_name }}
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset: 
+          "username": ${{ parameters.username }}
+          "name": ${{ parameters.name }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
         apikey: ${{ parameters.token }}
-    # The final step is to register our new component in the catalog.
-
+        enableVariableMapping: true
   output:
     links:
       - title: Pipeline Details
