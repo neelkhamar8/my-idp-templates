@@ -30,6 +30,69 @@ spec:
           description: Harness Project Identifier
           type: string
         custom:
+          title: GitHub Repos Multi
+          type: array
+          description: Pick multiple GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body:
+            #     entityRefs:
+            #       - user:default/autouser1
+            #     fields:
+            #       - kind
+            #       - metadata.name
+        custom1:
+          title: GitHub Repos Single
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body:
+            #     secret: { { parameters.formdata } }
+        custom2:
+          title: GitHub Repos Custom Single
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            allowArbitraryValues: true
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body: { { parameters.jsondata } }
+        customMulti:
+          title: GitHub Repos Custom Multi
+          type: array
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            label: Multi Select
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            allowArbitraryValues: true
+            # request:
+            #   method: POST
+            #   headers:
+            #     # Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
+            #     Content-Type: text/plain
+            #   body: This is a simple plain text message
+        custom:
+          title: Array Selector
           type: string
           # Use `SelectFieldFromApi` to configure the select field for the entry.
           ui:field: SelectFieldFromApi
