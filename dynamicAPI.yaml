@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: DYnamicMethod
-  title: selectfieldfrompai
+  name: DynamicMethod
+  title: DynamicMethod Neel
   description: A template to test [Workflows](https://www.google.com) <a href="www.harness.io">Harness</a>
 spec:
   owner: c_neel.khamar@harness.io
