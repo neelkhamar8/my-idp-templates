@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: DYnamicMethod
   title: selectfieldfrompai
-  description: A template to test GitSync
+  description: A template to test [Workflows](https://www.google.com) <a href="www.harness.io">Harness</a>
 spec:
   owner: c_neel.khamar@harness.io
   type: service
@@ -51,16 +51,16 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-              body:
-                entityRefs:
-                  - user:default/autouser1
-                fields:
-                  - kind
-                  - metadata.name
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body:
+            #     entityRefs:
+            #       - user:default/autouser1
+            #     fields:
+            #       - kind
+            #       - metadata.name
         custom1:
           title: GitHub Repos Single
           type: string
@@ -69,12 +69,12 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-              body:
-                secret: { { parameters.formdata } }
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body:
+            #     secret: { { parameters.formdata } }
         custom2:
           title: GitHub Repos Custom Single
           type: string
@@ -83,12 +83,12 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            # allowArbitraryValues: true
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-              body: { { parameters.jsondata } }
+            allowArbitraryValues: true
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body: { { parameters.jsondata } }
         customMulti:
           title: GitHub Repos Custom Multi
           type: array
@@ -98,13 +98,13 @@ spec:
             label: Multi Select
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            # allowArbitraryValues: true
-            request:
-              method: POST
-              headers:
-                # Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
-                Content-Type: text/plain
-              body: This is a simple plain text message
+            allowArbitraryValues: true
+            # request:
+            #   method: POST
+            #   headers:
+            #     # Authorization: bearer eyJ0eXAiOiJ2bmQuYmFja3N0YWdlLnVzZXIiLCJhbGciOiJFUzI1NiIsImtpZCI6IjZhMG
+            #     Content-Type: text/plain
+            #   body: This is a simple plain text message
     - title: Fill in some more steps
       properties:
         usernameRepo:
