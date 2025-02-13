@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: devspace-deploy
   title: Trigger Devspace deployment for services
-  description: Template for deploying services to Devspace
+  description: Template for deploying services to Devspace. A template to test [Workflows](https://www.google.com) <a href="www.harness.io">Harness</a>
   tags:
     - deploy
     - harness
@@ -16,7 +16,7 @@ spec:
       required:
         - UserId
       properties:
-        environment: 
+        environment:
           title: Environment
           type: string
           default: Devspaces
@@ -38,12 +38,12 @@ spec:
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
-        url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio?storeType=INLINE'
+        url: "https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/pipeline-studio?storeType=INLINE"
         inputset:
           USERID: ${{ parameters.UserId }}
           pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
           pipeline.stages.PreDep.spec.environment.infrastructureDefinitions: ${{ parameters.infrastructure }}
-        apikey: ${{ parameters.token }}   
+        apikey: ${{ parameters.token }}
   output:
     links:
       - title: Pipeline Details
