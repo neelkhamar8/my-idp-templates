@@ -3,7 +3,9 @@ kind: Template
 metadata:
   name: DynamicMethod
   title: DynamicMethod Neel
-  description: A template to test [Workflows](https://www.google.com) <a href="www.harness.io">Harness</a>
+  description: A template to test [Workflows](https://www.google.com)
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   owner: c_neel.khamar@harness.io
   type: service
