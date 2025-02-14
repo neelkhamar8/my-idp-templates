@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: devspace-deploy
   title: Trigger Devspace deployment for services
-  description: Template for deploying services to Devspace. A template to test [Workflows](https://www.google.com) <a href="www.harness.io">Harness</a>
+  description: Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. A template to test [Workflows](https://www.google.com)
   tags:
     - deploy
     - harness
