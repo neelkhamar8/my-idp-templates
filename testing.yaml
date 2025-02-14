@@ -1,0 +1,41 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: accountneel
+  title: Provide access to Harness account
+  description: Template for providing access to Harness account [guideline](https://www.google.com)
+  tags:
+    - access
+    - harness
+spec:
+  owner: sandeepa.kv@harness.io
+  type: service
+  parameters1:
+    - title: Harness Details
+      required:
+        - user_email
+        - account_id
+      properties:
+        account_id:
+          title: Harness account ID
+          type: string
+          description: Harness account ID where you need access
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Inviting user to account
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/IDP_SAAS/projects/IDPSAASTEST/pipelines/grant_account_access/pipeline-studio/?storeType=INLINE"
+        inputset:
+          user_email: ${{ parameters.user_email }}
+          account_id: ${{ parameters.account_id }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
