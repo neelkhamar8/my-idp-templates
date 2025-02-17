@@ -1,14 +1,14 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: accountneel
+  name: accountneelversion1
   title: Provide access to Harness account
   description: Template for providing access to Harness account [guideline](https://www.google.com)
   tags:
     - access
     - harness
 spec:
-  owner: sandeepa.kv@harness.io
+  owner: c_neel.khamar@harness.io
   type: service
   parameters1:
     - title: Harness Details
