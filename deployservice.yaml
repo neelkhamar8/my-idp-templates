@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: DeployServiceTest
   title: Deploy Service Test
-  description: Template for deploying services to Devspace
+  description: Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://www.google.com)
   tags:
     - deploy
     - harness
@@ -16,7 +16,7 @@ spec:
       required:
         - UserId
       properties:
-        environment: 
+        environment:
           title: Environment
           type: string
           default: Devspaces
