@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: accountneelversion1
+  name: accneel
   title: Provide access to Harness account
   description: Template for providing access to Harness account [guideline](https://www.google.com)
   tags:
