@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: devspace-deploy
+  name: devspaceneelacc
   title: Trigger Devspace deployment for services
   description: Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. A template to test [Workflows](https://www.google.com)
   tags:
