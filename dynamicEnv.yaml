@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: devspaceneelacc
   title: Trigger Devspace deployment for services
-  description: Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. A template to test [Workflows](https://www.google.com)
+  description: TemplatefordeployingservicestoDevspace.TemplatefordeployingservicestoDevspace.TemplatefordeployingservicestoDevspace.TemplatefordeployingservicestoDevspace.Atemplatetotest[Workflows](https://www.google.com)
 spec:
   owner: c_neel.khamar@harness.io
   type: service
