@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: DynamicMethod
   title: DynamicMethod Neel
-  description: A template to test [Workflows](https://www.google.com)
+  description: A template to test
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
