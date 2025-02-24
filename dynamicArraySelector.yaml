@@ -1,0 +1,68 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: ArraySelector
+  title: ArraySelector Neel
+  description: A template to test
+spec:
+  owner: c_neel.khamar@harness.io
+  type: service
+  parameters:
+    - title: Fill in some steps
+      properties:
+        name:
+          title: Select environments
+          type: array
+          items:
+            type: string
+            enum:
+              - production
+              - staging
+              - development
+          uniqueItems: true
+          ui:widget: checkboxes
+        gitusername:
+          title: Github username
+          description: Harness Project Identifier
+          type: string
+        custom:
+          type: string
+          # Use `SelectFieldFromApi` to configure the select field for the entry.
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: My Dropdown title
+            description: My custom description for the component
+
+            # The Path on the Backstage API and the parameters to fetch the data for the dropdown
+            path: "catalog/entity-facets"
+            params:
+              facet: "kind"
+
+            # (Optional) Renders the provided text as a placeholder value into the select box.
+            placeholder: "Select from options"
+
+            # This selects the array element from the API fetch response. It finds the array with the name kind
+            # under the facets object
+            arraySelector: "facets.kind"
+
+            # (Optional) This selects the field in the array to use for the value of each select item. If its not specified
+            # it will use the value of the item directly.
+            valueSelector: "count"
+            # (Optional) This selects the field in the array to use for the label of each select item.
+            labelSelector: "value"
+  steps:
+    - id: trigger
+      name: Writing the GitSync Variable
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/idpprojectsc/pipelines/DummyPipeline/pipeline-studio/?storeType=INLINE&stageId=DummyStage&sectionId=EXECUTION
+        inputset:
+          "username": ${{ parameters.username }}
+          "name": ${{ parameters.name }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters['pipeline.stages.GitsyncStageTemplate.variables.greetings'] }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
