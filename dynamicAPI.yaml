@@ -4,8 +4,6 @@ metadata:
   name: DynamicMethod
   title: DynamicMethod Neel
   description: A template to test
-  annotations:
-    backstage.io/techdocs-ref: dir:.
 spec:
   owner: c_neel.khamar@harness.io
   type: service
@@ -28,7 +26,7 @@ spec:
           title: GitHub Repos Single
           type: string
           description: Pick one of GitHub Repos
-          ui:field: ValidateAndFetch
+          ui:field: SelectFieldFromApi
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
