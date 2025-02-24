@@ -30,21 +30,23 @@ spec:
           description: Pick one of GitHub Repos
           ui:field: ValidateAndFetch
           ui:options:
-            button:
-              title: Fetch Refs
-            path: "catalog/entities/by-refs"
-            contextData:
-              loginName: items[0].metadata.name
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-              body:
-                entityRefs:
-                  - user:default/autouser1
-                fields:
-                  - kind
-                  - metadata.name
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+        #     button:
+        #       title: Fetch Refs
+        #     path: "catalog/entities/by-refs"
+        #     contextData:
+        #       loginName: items[0].metadata.name
+        # request:
+        #   method: POST
+        #   headers:
+        #     Content-Type: application/json
+        #   body:
+        #     entityRefs:
+        #       - user:default/autouser1
+        #     fields:
+        #       - kind
+        #       - metadata.name
         custom:
           title: GitHub Repos Multi
           type: array
@@ -53,16 +55,16 @@ spec:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitusername}}/repos
             valueSelector: full_name
-            request:
-              method: POST
-              headers:
-                Content-Type: application/json
-              body:
-                entityRefs:
-                  - user:default/autouser1
-                fields:
-                  - kind
-                  - metadata.name
+            # request:
+            #   method: POST
+            #   headers:
+            #     Content-Type: application/json
+            #   body:
+            #     entityRefs:
+            #       - user:default/autouser1
+            #     fields:
+            #       - kind
+            #       - metadata.name
         custom1:
           title: GitHub Repos Single
           type: string
