@@ -4,6 +4,10 @@ metadata:
   name: accneel
   title: Provide access to Harness account
   description: Template for providing access to Harness account [guideline](https://www.google.com)
+  links:
+    - url: https://dashboard.example.com
+      title: My Dashboard
+      icon: mend
   tags:
     - access
     - harness
