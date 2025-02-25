@@ -4,6 +4,8 @@ metadata:
   name: DynamicMethod
   title: DynamicMethod Neel
   description: A template to test
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   owner: c_neel.khamar@harness.io
   type: service
