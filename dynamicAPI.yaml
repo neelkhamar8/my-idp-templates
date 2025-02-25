@@ -16,14 +16,28 @@ spec:
           title: Github username
           description: Harness Project Identifier
           type: string
-        formdata:
-          title: Secret
-          description: API Secret
+        repositoryname:
           type: string
-        jsondata:
-          title: Json Data
-          description: Payload
-          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: Select the Name of the
+            description: Enter the Name of
+            allowArbitraryValues: true
+            path: "proxy/github-repo-search/search/repositories"
+            params:
+              q: "org:United-Airlines-Org {{ parameters.searchTerm }}"
+            per_page: "100"
+            arraySelector: items
+            valueSelector: name
+            labelSelector: name
+        # formdata:
+        #   title: Secret
+        #   description: API Secret
+        #   type: string
+        # jsondata:
+        #   title: Json Data
+        #   description: Payload
+        #   type: string
         custom:
           title: GitHub Repos Multi
           type: array
