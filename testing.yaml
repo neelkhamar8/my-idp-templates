@@ -14,32 +14,101 @@ metadata:
 spec:
   owner: c_neel.khamar@harness.io
   type: service
-  parameters1:
-    - title: Harness Details
-      required:
-        - user_email
-        - account_id
+  parameters:
+    - title: Fill in some steps
       properties:
-        account_id:
-          title: Harness account ID
+        repositoryname:
           type: string
-          description: Harness account ID where you need access
-        token:
-          title: Harness Token
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: Select the Name of the
+            description: Enter the Name of
+            allowArbitraryValues: true
+            path: "proxy/github-api/search/repositories"
+            params:
+              q: "org:harness {{ parameters.searchTerm }}"
+            per_page: "100"
+            arraySelector: items
+            valueSelector: name
+            labelSelector: name
+        gitusername:
+          title: Github username
+          description: Harness Project Identifier
           type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
+          default: test
+        customone:
+          title: GitHub Repos
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            allowArbitraryValues: true
+        customTwo:
+          title: GitHub Repos
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            labelSelector: id
+            allowArbitraryValues: true
+        customMulti:
+          title: GitHub Repos Multi
+          type: array
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            label: Multi Select
+            allowArbitraryValues: true
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+            labelSelector: id
+            minItems: 1
+            maxItems: 2
+        customMultiLable:
+          title: GitHub Repos Multi
+          type: array
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            label: Multi Select
+            allowArbitraryValues: true
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: id
+            labelSelector: name
+        custom:
+          type: string
+          # Use `SelectFieldFromApi` to configure the select field for the entry.
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: My Dropdown title
+            description: My custom description for the component
+
+            # The Path on the Backstage API and the parameters to fetch the data for the dropdown
+            path: "catalog/entity-facets"
+            params:
+              facet: "kind"
+
+            # (Optional) Renders the provided text as a placeholder value into the select box.
+            placeholder: "Select from options"
+
+            # This selects the array element from the API fetch response. It finds the array with the name kind
+            # under the facets object
+            arraySelector: "facets.kind"
+
+            # (Optional) This selects the field in the array to use for the value of each select item. If its not specified
+            # it will use the value of the item directly.
+            valueSelector: "count"
+            # (Optional) This selects the field in the array to use for the label of each select item.
+            labelSelector: "value"
   steps:
-    - id: trigger
-      name: Inviting user to account
-      action: trigger:harness-custom-pipeline
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
       input:
-        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/IDP_SAAS/projects/IDPSAASTEST/pipelines/grant_account_access/pipeline-studio/?storeType=INLINE"
-        inputset:
-          user_email: ${{ parameters.user_email }}
-          account_id: ${{ parameters.account_id }}
-        apikey: ${{ parameters.token }}
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+        url: ./template
+        values:
+          name: ${{parameters.name}}
