@@ -38,7 +38,7 @@ spec:
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
-        url: https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/all/orgs/default/projects/Deepesh_CDE/pipelines/dynamicenv/pipeline-studio?storeType=INLINE
+        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/idp_auto_do_not_delete/projects/test/pipelines/Dynamic_Env/executions?storeType=INLINE
         inputset:
           USERID: ${{ parameters.UserId }}
           pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
