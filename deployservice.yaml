@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: DeployServiceTest
-  title: Deploy Service Test
+  title: New Neel Deploy Service
   description: Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://harness0.harness.io/ng/account/l7B_kbSEQD2wjrM7PShm5w/all/orgs/PROD/projects/Harness/pipelines/Deploy_Services/executions/stIjTYIST3qLClOax9CVJg/pipeline?connectorRef=org.harnessplinfra&repoName=harness-pl-infra&branch=master&storeType=REMOTE)
   tags:
     - deploy
