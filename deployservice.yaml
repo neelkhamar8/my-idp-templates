@@ -11,6 +11,14 @@ metadata:
 spec:
   owner: c_neel.khamar@harness.io
   type: service
+  parameters:
+    - title: Trigger deployment
+      properties:
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
   steps:
     - id: trigger
       name: Trigger Deployment
