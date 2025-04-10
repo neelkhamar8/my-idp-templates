@@ -27,7 +27,6 @@ spec:
         url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/cd/orgs/default/projects/neelidp/pipelines/idptesting/executions?storeType=INLINE&searchTerm=&myDeployments=false&timeRange%5BtimeRangeFilterType%5D=LAST_30_DAYS
         inputset:
           USERID: neelkhamar8
-        apikey: ${{ parameters.token }}  
         apikeySecret: ${{ parameters.token }}
         apiKeySecret: dummyneel
   output:
