@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: DeployServiceTest
-  title: Deploy Service Test
+  name: DeployServiceTest Newly Updated
+  title: Deploy Service Test Newly Updated
   description: Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://www.google.com)
   tags:
     - deploy
@@ -38,7 +38,8 @@ spec:
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
-        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/idp_auto_do_not_delete/projects/test/pipelines/Dynamic_Env/executions?storeType=INLINE
+        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/executions?storeType=INLINE
+        # url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/idp_auto_do_not_delete/projects/test/pipelines/Dynamic_Env/executions?storeType=INLINE
         inputset:
           USERID: ${{ parameters.UserId }}
           pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
