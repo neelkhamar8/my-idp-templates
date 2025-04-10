@@ -11,39 +11,12 @@ metadata:
 spec:
   owner: c_neel.khamar@harness.io
   type: service
-  parameters:
-    - title: Trigger deployment
-      required:
-        - UserId
-      properties:
-        environment:
-          title: Environment
-          type: string
-          default: Devspaces
-        infrastructure:
-          title: Infrastructure
-          type: string
-          default: infra
-        UserId:
-          title: UserId
-          type: string
-          description: Enter your name alias example if your name is John Smith, then enter johns and for snapshot just snapshot
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
   steps:
     - id: trigger
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
         url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/cd/orgs/default/projects/neelidp/pipelines/idptesting/executions?storeType=INLINE&searchTerm=&myDeployments=false&timeRange%5BtimeRangeFilterType%5D=LAST_30_DAYS
-        inputset:
-          USERID: ${{ parameters.UserId }}
-          pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
-          pipeline.stages.PreDep.spec.environment.infrastructureDefinitions: ${{ parameters.infrastructure }}
-        apiKeySecret: dummydeepesh
   output:
     links:
       - title: Pipeline Details
