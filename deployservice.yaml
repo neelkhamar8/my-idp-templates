@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: DeployServiceTestNewUpdated
+  name: DeployServiceTestNewUpdated2
   title: Deploy Service Test Newly Updated
   description: Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://www.google.com)
   tags:
