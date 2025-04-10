@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: DeployServiceTest
-  title: New Neel Deploy Service
-  description: Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://harness0.harness.io/ng/account/l7B_kbSEQD2wjrM7PShm5w/all/orgs/PROD/projects/Harness/pipelines/Deploy_Services/executions/stIjTYIST3qLClOax9CVJg/pipeline?connectorRef=org.harnessplinfra&repoName=harness-pl-infra&branch=master&storeType=REMOTE)
+  name: DeployServiceTest Newly Updated
+  title: Deploy Service Test Newly Updated
+  description: Template for deploying services to Devspace. Template for deploying services to Devspace. This is a dummy workflow created just for testing purpose and the validation of description link present in the description [guidelines](https://www.google.com)
   tags:
     - deploy
     - harness
@@ -38,7 +38,8 @@ spec:
       name: Trigger Deployment
       action: trigger:harness-custom-pipeline
       input:
-        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/idp_auto_do_not_delete/projects/test/pipelines/Dynamic_Env/executions?storeType=INLINE
+        url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/cd/orgs/default/projects/Deepesh_CDE/pipelines/Idptemplate/executions?storeType=INLINE
+        # url: https://qa.harness.io/ng/account/px7xd_BFRCi-pfWPYXVjvw/module/ci/orgs/idp_auto_do_not_delete/projects/test/pipelines/Dynamic_Env/executions?storeType=INLINE
         inputset:
           USERID: ${{ parameters.UserId }}
           pipeline.stages.PreDep.spec.environment.environmentRef: ${{ parameters.environment }}
