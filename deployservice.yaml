@@ -28,7 +28,6 @@ spec:
         inputset:
           USERID: neelkhamar8
         apikeySecret: ${{ parameters.token }}
-        apiKeySecret: dummyneel
   output:
     links:
       - title: Pipeline Details
