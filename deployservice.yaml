@@ -9,7 +9,7 @@ metadata:
     - harness
     - devspace
 spec:
-  owner: dummy user from neel khamar from harness c_neel.khamar@harness.io
+  owner: c_neel.khamar@harness.io
   type: service
   parameters:
     - title: Trigger deployment
